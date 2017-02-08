@@ -27,7 +27,7 @@ class Net:
         b1, b2 = self.params['b1'], self.params['b2']
 
         a1 = np.dot(x, W1) + b1
-        z1 = sigmoid(a1)
+        z1 = relu(a1)
         a2 = np.dot(z1, W2) + b2
         y = a2
 
@@ -35,9 +35,11 @@ class Net:
 
     def loss(self, x, t):
         y = self.predict(x)
-        # return np.sum((t - y) ** 2)
+        return np.sum((t - y) ** 2) / x.shape[0]
         # return 2 ** np.sum(np.abs(t - y)) - 1
-        return np.sum((1 + np.abs(t - y)) ** 2) - 1
+        # return np.sum((1 + np.abs(t - y)) ** 2) - 1
+        # -np.sum(np.log(y[np.arange(batch_size), t])) / batch_size
+        # return -np.sum(np.log(np.abs(t - y) ** 2)) / x.shape[0]
 
     def numerical_gradient(self, x, t):
         loss_W = lambda W: self.loss(x, t)
@@ -58,7 +60,7 @@ class Net:
 
         # forward
         a1 = np.dot(x, W1) + b1
-        z1 = sigmoid(a1)
+        z1 = relu(a1)
         a2 = np.dot(z1, W2) + b2
         y = a2
 
@@ -68,7 +70,7 @@ class Net:
         grads['b2'] = np.sum(dy, axis=0)
 
         da1 = np.dot(dy, W2.T)
-        dz1 = sigmoid_grad(a1) * da1
+        dz1 = relu_grad2(a1) * da1
         grads['W1'] = np.dot(x.T, dz1)
         grads['b1'] = np.sum(dz1, axis=0)
 
@@ -130,12 +132,12 @@ for i in range(50000):
 
     loss = network.loss(train_data, train_label)
 
-    test_data, test_label = random_train_batch(1)
+    test_data, test_label = random_train_batch(10)
     predict = network.predict(test_data)
     test_loss = network.loss(test_data, test_label)
 
     print(str(i) +
-          ' / train loss: ' + str(loss / train_batch_size) +
+          ' / train loss: ' + str(loss) +
           ' test fx: ' + str(test_label[0][0]) + ' x + ' + str(test_label[0][1]) +
           ' / predict: ' + str(predict[0]) +
           ' / test loss: ' + str(test_loss))
