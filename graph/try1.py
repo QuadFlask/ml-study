@@ -35,15 +35,9 @@ class Net:
 
     def loss(self, x, t):
         y = self.predict(x)
-        return np.sum((t - y) ** 2)
-
-    def accuracy(self, x, t):
-        y = self.predict(x)
-        y = np.argmax(y, axis=1)
-        t = np.argmax(t, axis=1)
-
-        accuracy = np.sum(y == t) / float(x.shape[0])
-        return accuracy
+        # return np.sum((t - y) ** 2)
+        # return 2 ** np.sum(np.abs(t - y)) - 1
+        return np.sum((1 + np.abs(t - y)) ** 2) - 1
 
     def numerical_gradient(self, x, t):
         loss_W = lambda W: self.loss(x, t)
@@ -87,23 +81,47 @@ half_width_size = int(width_size / 2)
 
 def random_train():
     data = np.zeros(width_size * width_size)
-    a = random.randrange(-5, 5)
-    b = random.randrange(-5, 5)
-    print('fx: ' + str(a) + 'x+' + str(b))
+    # a = random.random() * 10 - 5
+    # b = random.random() * 10 - 5
+    a = random.randrange(-9, 9)
+    b = random.randrange(-9, 9)
     for x in range(width_size):
         _x = x - half_width_size
         _y = f1(a, _x, b) - half_width_size
-        i = _x + half_width_size + (_y + half_width_size) * width_size
+        i = int(_x + half_width_size + (_y + half_width_size) * width_size)
         if 0 <= i < width_size * width_size:
             data[i] = 1
 
     return np.array([data]), np.array([[a, b]])
 
 
+def random_train_batch(count=100):
+    batch_data = []
+    batch_label = []
+    for batch_i in range(count):
+        data = np.zeros(width_size * width_size)
+        a = random.random() * 10 - 5
+        b = random.random() * 10 - 5
+        # a = random.randrange(-9, 9)
+        # b = random.randrange(-9, 9)
+        for x in range(width_size):
+            _x = x - half_width_size
+            _y = f1(a, _x, b) - half_width_size
+            i = int(_x + half_width_size + (_y + half_width_size) * width_size)
+            if 0 <= i < width_size * width_size:
+                data[i] = 1
+
+        batch_data.append(data)
+        batch_label.append([a, b])
+
+    return np.array(batch_data), np.array(batch_label)
+
+
 network = Net(input_size=324, hidden_size=81, output_size=2)
+train_batch_size = 10000
 
 for i in range(50000):
-    train_data, train_label = random_train()
+    train_data, train_label = random_train_batch(train_batch_size)
 
     grad = network.gradient(train_data, train_label)
 
@@ -111,9 +129,13 @@ for i in range(50000):
         network.params[key] -= learning_rate * grad[key]
 
     loss = network.loss(train_data, train_label)
-    print('loss: ' + str(loss))
 
-    test_data, test_label = random_train()
+    test_data, test_label = random_train_batch(1)
     predict = network.predict(test_data)
-    test_acc = 1. - network.loss(test_data, test_label)
-    print('predict: ' + str(predict) + ' / test acc: ' + str(test_acc))
+    test_loss = network.loss(test_data, test_label)
+
+    print(str(i) +
+          ' / train loss: ' + str(loss / train_batch_size) +
+          ' test fx: ' + str(test_label[0][0]) + ' x + ' + str(test_label[0][1]) +
+          ' / predict: ' + str(predict[0]) +
+          ' / test loss: ' + str(test_loss))
