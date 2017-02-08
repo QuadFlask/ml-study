@@ -100,10 +100,10 @@ def random_train_batch(count=100):
     batch_label = []
     for batch_i in range(count):
         data = np.zeros(width_size * width_size)
-        a = random.random() * 10 - 5
-        b = random.random() * 10 - 5
-        # a = random.randrange(-9, 9)
-        # b = random.randrange(-9, 9)
+        # a = random.random() * 10 - 5
+        # b = random.random() * 10 - 5
+        a = random.randrange(-9, 9)
+        b = random.randrange(-9, 9)
         for x in range(width_size):
             _x = x - half_width_size
             _y = f1(a, _x, b) - half_width_size
@@ -118,9 +118,9 @@ def random_train_batch(count=100):
 
 
 network = Net(input_size=324, hidden_size=81, output_size=2)
-train_batch_size = 10000
+train_batch_size = 100
 
-for i in range(50000):
+for i in range(10000):
     train_data, train_label = random_train_batch(train_batch_size)
 
     grad = network.gradient(train_data, train_label)
