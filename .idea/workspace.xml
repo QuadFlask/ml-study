@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="48a02ee3-24e1-4508-bfeb-fc8de349e9fa" name="Default" comment="배치 사이즈가 10000일때 보다 100일때가 더 잘되는거 같다 그래디언트가 좀 계산이 잘 안되나? 너무 많아서 그런가 ?">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/graph/try2.py" />
+    <list default="true" id="48a02ee3-24e1-4508-bfeb-fc8de349e9fa" name="Default" comment="try2">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graph/try1.py" afterPath="$PROJECT_DIR$/graph/try1.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/graph/try2.py" afterPath="$PROJECT_DIR$/graph/try2.py" />
     </list>
     <ignored path="ml.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,20 +26,8 @@
       <file leaf-file-name="try2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/graph/try2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="try1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graph/try1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="66" column="31" lean-forward="false" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="31" />
+            <state relative-caret-position="75">
+              <caret line="147" column="147" lean-forward="true" selection-start-line="147" selection-start-column="147" selection-end-line="147" selection-end-column="147" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -499,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486576876493</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="try2">
+      <created>1486651049515</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1486651049515</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -520,7 +514,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27592593" sideWeight="0.50394946" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40460947" sideWeight="0.49605057" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7234315" sideWeight="0.49605057" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27592593" sideWeight="0.49605057" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28422877" sideWeight="0.50596255" order="2" side_tool="true" content_ui="tabs" />
@@ -569,7 +563,8 @@
     <MESSAGE value="ch 4 done" />
     <MESSAGE value="Add graph formula regression" />
     <MESSAGE value="배치 사이즈가 10000일때 보다 100일때가 더 잘되는거 같다 그래디언트가 좀 계산이 잘 안되나? 너무 많아서 그런가 ?" />
-    <option name="LAST_COMMIT_MESSAGE" value="배치 사이즈가 10000일때 보다 100일때가 더 잘되는거 같다 그래디언트가 좀 계산이 잘 안되나? 너무 많아서 그런가 ?" />
+    <MESSAGE value="try2" />
+    <option name="LAST_COMMIT_MESSAGE" value="try2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -905,16 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graph/try1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="66" column="31" lean-forward="false" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -923,10 +908,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/graph/try1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="104" column="35" lean-forward="true" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/graph/try2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="147" column="147" lean-forward="true" selection-start-line="147" selection-start-column="147" selection-end-line="147" selection-end-column="147" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
