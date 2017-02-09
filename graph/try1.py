@@ -104,12 +104,19 @@ def random_train_batch(count=100):
         # b = random.random() * 10 - 5
         a = random.randrange(-9, 9)
         b = random.randrange(-9, 9)
-        for x in range(width_size):
-            _x = x - half_width_size
+        for i in data.shape[0]:
+            _x = int(i / width_size) - half_width_size
             _y = f1(a, _x, b) - half_width_size
             i = int(_x + half_width_size + (_y + half_width_size) * width_size)
             if 0 <= i < width_size * width_size:
                 data[i] = 1
+
+        # for x in range(width_size):
+        #     _x = x - half_width_size
+        #     _y = f1(a, _x, b) - half_width_size
+        #     i = int(_x + half_width_size + (_y + half_width_size) * width_size)
+        #     if 0 <= i < width_size * width_size:
+        #         data[i] = 1
 
         batch_data.append(data)
         batch_label.append([a, b])
@@ -120,7 +127,7 @@ def random_train_batch(count=100):
 network = Net(input_size=324, hidden_size=81, output_size=2)
 train_batch_size = 100
 
-for i in range(10000):
+for i in range(500000):
     train_data, train_label = random_train_batch(train_batch_size)
 
     grad = network.gradient(train_data, train_label)
@@ -128,14 +135,15 @@ for i in range(10000):
     for key in ['W1', 'b1', 'W2', 'b2']:
         network.params[key] -= learning_rate * grad[key]
 
-    loss = network.loss(train_data, train_label)
+    if i % 1000 == 0:
+        train_loss = network.loss(train_data, train_label)
 
-    test_data, test_label = random_train_batch(1)
-    predict = network.predict(test_data)
-    test_loss = network.loss(test_data, test_label)
+        test_data, test_label = random_train_batch(1)
+        predict = network.predict(test_data)
+        test_loss = network.loss(test_data, test_label)
 
-    print(str(i) +
-          ' / train loss: ' + str(loss / train_batch_size) +
-          ' test fx: ' + str(test_label[0][0]) + ' x + ' + str(test_label[0][1]) +
-          ' / predict: ' + str(predict[0]) +
-          ' / test loss: ' + str(test_loss))
+        print(str(i) +
+              ' / train loss: ' + str(train_loss / train_batch_size) +
+              ' test fx: ' + str(test_label[0][0]) + ' x + ' + str(test_label[0][1]) +
+              ' / predict: ' + str(predict[0]) +
+              ' / test loss: ' + str(test_loss))
