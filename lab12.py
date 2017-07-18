@@ -4,6 +4,7 @@ import numpy as np
 
 char_rdic = ['h', 'e', 'l', 'o']
 char_dic = {w: i for i, w in enumerate(char_rdic)}
+print(char_dic)
 x_data = np.array([[1, 0, 0, 0],
                    [0, 1, 0, 0],
                    [0, 0, 1, 0],
